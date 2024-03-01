@@ -1,0 +1,15 @@
+{
+  "name": "project_lifehack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apico": "^1.1.6",
+    "fs-extra": "^11.2.0"
+  }
+}
