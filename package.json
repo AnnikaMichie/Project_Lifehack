@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "apico": "^1.1.6",
-    "fs-extra": "^11.2.0"
+    "apico": "^2.1.3"
   }
 }
