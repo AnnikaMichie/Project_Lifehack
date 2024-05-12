@@ -1,29 +1,30 @@
 const router  = require('express').Router();
-const { app } = require('apico/server');
 const mysql = require('mysql2');
+const { app } = require('apico/server'); // Assuming 'apico/server' is correctly imported
 
-
-// htt://localhost:3000/auth/register "POST"
-router.post('/register', async( req, res )=>{
+// http://localhost:3000/auth/register "POST"
+router.post('/register', async (req, res) => {
 
     let { name, email, username, password, conf_password, phone } = req.body;
 
     let pool = mysql.createPool({
         host: 'localhost',
         user: 'root',
-        database: 'blog',
-        password: 'root123456'
-      });
+        database: 'lifehackproject',
+        password: 'Sewing1!'
+    });
+
+    let sql = `insert into user (name, email, username, password, phone) values (?, ?, ?, ?, ?)`;
     
-      let sql = `inset into user( name, email, username, password, phone ) values( ?, ?, ?, ?, ? )`;
-     // 2 sec 
-      pool.query(sql, [  name, email, username, password, conf_password, phone ], function(err, posts, fields) {
-        if(err) throw err;
-        console.log(' posts ',posts);
-
-        res.json({ message: 'User registered successfully' });
-
-      });
+    pool.query(sql, [name, email, username, password, phone], function(err, results, fields) {
+        if(err) {
+            console.error(err);
+            res.status(500).json({ error: 'Internal server error' });
+        } else {
+            console.log('User registered successfully');
+            res.json({ message: 'User registered successfully' });
+        }
+    });
 });
 
-app.use( '/auth', router );
+app.use('/auth/register', router);
