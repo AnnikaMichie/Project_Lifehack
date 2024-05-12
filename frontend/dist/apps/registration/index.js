@@ -20,7 +20,7 @@ btn.addEventListener('click', function(event) {
         phone: phone.value
     };
 
-    fetch('/register', {
+    fetch('/registeration', {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {

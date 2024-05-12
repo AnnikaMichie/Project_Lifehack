@@ -3,9 +3,9 @@ const mysql = require('mysql2');
 const { app } = require('apico/server'); // Assuming 'apico/server' is correctly imported
 
 // http://localhost:3000/auth/register "POST"
-router.post('/register', async (req, res) => {
+router.post('/registeration', async (req, res) => {
 
-    let { name, email, username, password, conf_password, phone } = req.body;
+    let { name, email, username, password, repeatpassword, phone } = req.body;
 
     let pool = mysql.createPool({
         host: 'localhost',
@@ -27,4 +27,4 @@ router.post('/register', async (req, res) => {
     });
 });
 
-app.use('/auth/register', router);
+app.use('/registration', router);
